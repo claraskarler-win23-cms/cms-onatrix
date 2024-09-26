@@ -1,0 +1,51 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    Layout = "mainLayout.cshtml";
+    ViewBag.Title = @Model?.Value("pageTitle") ?? null;
+    var heroBackgroundImage = Model?.Value("heroImage") is IPublishedContent heroImage ? heroImage.Url() : "";
+    var signatureImage = Model?.Value("aboutSignatureImage") is IPublishedContent signature ? signature.Url() : "";
+    
+}
+
+<section id="hero" class="hero">
+    <img src="@heroBackgroundImage" alt="A smiling blonde-haired woman wearing glasses" />
+    <div class="container">
+        <div class="showcase-text">
+            <h1>@Model?.Value("heroHeadline")</h1>
+            <p>@Model?.Value("heroText")</p>
+            <a href="@Model?.Value("heroButtonUrl")" class="btn-dark">@Model?.Value("heroButtonText")</a>
+        </div>
+    </div>
+</section>
+
+<section id="about-us" class="about-us">
+    <div class="container">
+        <div class="about-us-text">
+            <div class="section-title">
+                <h5>@Model?.Value("aboutSectionTitle")</h5>
+                <h2>@Model?.Value("aboutHeadline")</h2>
+            </div>
+            <div class="founder-text">
+                <div class="quote">“@Model?.Value("aboutQuotation")”</div>
+                <p>@Model?.Value("aboutText")</p>
+                <div class="signature">
+                    <img src="@signatureImage" alt="@Model?.Value("aboutSignatureText")" />
+                    <p>@Model?.Value("aboutSignatureText")</p>
+                </div>
+            </div>
+        </div>
+        <div class="call-back-box">
+            <h3>Request a call back</h3>
+            <p class="form-text">Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat</p>
+            <div class="form">
+                <p>Name</p>
+                <p>Email Address</p>
+                <p>Phone</p>
+                <p>Financial consulting</p>
+                <button class="btn-light">Submit</button>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,14 @@
+.btn-dark {
+    @include button;
+    background-color: $theme;
+    color: $cream;
+    border: none;
+    padding: 12px 25px;
+}
+
+.btn-light {
+    @include button;
+    background-color: $cream;
+    color: $theme;
+    border: none;
+}
