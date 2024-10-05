@@ -1,6 +1,5 @@
 .hero {
-    margin-bottom: 300px;
-    img {
+    .hero-image {
         position: absolute;
         z-index: -1;
         width: 100%;
@@ -21,8 +20,19 @@
 .about-us {
     .container {
         display: flex;
+        
+        .about-us-text {
+            margin-top: 200px;
+        }
+
+
         .call-back-box {
             @include shadow-l;
+            background-color: $white;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 50px;
+            width: 100%;
             h3 {
                 padding: 25px 20px;
                 font-weight: 600;
@@ -31,6 +41,16 @@
             }
             p {
                 padding: 0px 20px;
+            }
+
+            .form {
+                display: flex;
+                flex-direction: column;
+
+                .btn-light {
+                    padding: 10px 0px;
+                    margin: 0px 20px;
+                }
             }
         }
     }
@@ -42,21 +62,38 @@
         flex-direction: column;
         justify-content: center;
         text-align: center;
+        padding-top: 50px;
         .client-text-area {
             h2 {
                 color: $theme;
-                padding: 0px 400px;
+                padding: 15px 400px;
                 font-weight: 700;
                 span {
                     color: $beige;
                 }
             }
             p {
-                padding: 0px 300px;
+                padding: 10px 300px;
             }
             
         }
+
+        img {
+            padding-top: 100px;
+            width: 100%;
+        }
     }
+}
+
+.services {
+    background-color: $off-white;
+    .container { 
+        .section-title {
+            text-align: center;
+        }
+        
+    }
+
 }
 
 .stories {
@@ -78,7 +115,10 @@
         .success-stats {
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
             .number-stat {
+                padding: 10px 10px;
+                max-width: 400px;
                 .big-number {
                     color: $beige;
                 }
@@ -86,6 +126,16 @@
                     color: $white;
                 }
             }
+        }
+    }
+}
+
+.brands {
+    .container {
+        display: flex;
+        justify-content: space-between;
+        img {
+            padding: 50px 0px;
         }
     }
 }

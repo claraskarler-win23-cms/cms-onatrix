@@ -6,6 +6,8 @@ header {
             justify-content: space-between;
             padding-top: 15px;
             p {
+            font-size: 0.8rem;
+            font-weight: 300;
             color: $white;
             }
             .social-icons {
@@ -21,26 +23,51 @@ header {
     }
     .header-nav {
         @include shadow-s;
+        z-index: 10;
+        position: relative;
         .container {
             padding: 20px 0px;
             display: flex;
             justify-content: space-between;
             .nav-links {
+                color: $theme;
                 padding-top: 10px;
                 display: flex;
                 gap: 70px;
                 font-family: "Poppins", sans-serif;
+                font-weight: 700;
             }
             .search {
                 padding-top: 10px;
             }
         }
     }
-}
+    .breadcrumb-section {
+        z-index: -1;
+        background-color: $off-white;
+        @include shadow-dark;
+        .container {
+            padding: 50px 0px;
+            text-align: center;
+            h1 {
+                color: $theme;
+                font-weight: 700;
+            }
 
-.brands {
-    .container {
-        display: flex;
-        justify-content: space-between;
+            .breadcrumb {
+                display: flex;
+                justify-content: center;
+                a {
+                    text-decoration: none;
+                    color: $theme;
+                }
+                .active {
+                    color: $beige;
+                }
+            }
+        }
     }
 }
+
+
+

@@ -1,0 +1,36 @@
+.service-details {
+    .container {
+        display: flex;
+        margin-top: 80px;
+        .sidebar {
+            max-width: 30%;
+            border-right: 2px solid $off-white;
+            margin-right: 50px;
+
+            .email {
+                color: $cream;
+                p {
+                    color: $cream;
+                }
+                i {
+                    color: $theme;
+                }
+                background-color: $theme;
+            }
+        }
+    }
+}
+
+.question-form {
+    .container {
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+
+            textarea {
+                grid-column: span 2; 
+            }
+        }
+    }
+}

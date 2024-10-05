@@ -1,20 +1,19 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
-
-    Layout = null;
-
     var pageTitle = !string.IsNullOrEmpty(ViewBag.Title) ? $"{ViewBag.Title} | Onatrix" : "Onatrix";
+    
 }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>@pageTitle</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://kit.fontawesome.com/a576612222.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -24,26 +23,30 @@
                 <div class="container">
                     <p>Klarabergsviadukten 90, 111 64 Stockholm</p>
                     <div class="social-icons">
-                        <i class="fa-brands fa-facebook-f"></i>
-                        <i class="fa-brands fa-x-twitter"></i>
-                        <i class="fa-brands fa-linkedin-in"></i>
+                        <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
             <div class="header-nav">
                 <div class="container">
-                    <img src="/images/logo.svg" alt="onatrix logotype" id="onatrix-logotype">
+                    <a href="/"> <img src="@Url.Content("~/media/3lhf21iw/logo.svg")" alt="onatrix logotype" id="onatrix-logotype"></a>
                     <div class="nav-links">
-                        <a class="nav-link">About</a>
-                        <a class="nav-link">Services</a>
-                        <a class="nav-link">Projects</a>
-                        <a class="nav-link">Contact</a>
+                        <a class="nav-link" href="/about">About</a>
+                        <a class="nav-link" href="/services">Services</a>
+                        <a class="nav-link" href="/projects">Projects</a>
+                        <a class="nav-link" href="/contact">Contact</a>
                     </div>
                     <div class="search">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                 </div>
             </div>
+            @if (ViewBag.Title != "Home") 
+                {
+                    @await Html.PartialAsync("static/breadcrumb")
+                }
         </header>
         
         <main>

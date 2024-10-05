@@ -1,0 +1,27 @@
+a {
+    text-decoration: none;
+    color: $theme;
+    transition: background-color 0.1s ease;
+
+    
+    &:hover {
+        text-decoration: none;
+        color: darken($theme, 10%); 
+    }
+
+    &:active {
+        text-decoration: none;
+        color: $dark;
+    }
+}
+
+.service-grid {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(2, auto); 
+    gap: 20px; 
+
+    .service-box {
+        border: 1px solid $off-white;
+    }
+}

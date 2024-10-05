@@ -3,7 +3,18 @@
     background-color: $theme;
     color: $cream;
     border: none;
+    border-radius: 3px;
     padding: 12px 25px;
+    text-decoration: none;
+    transition: background-color 0.1s ease;
+    &:hover {
+        background-color: darken($theme, 10%); 
+        text-decoration: none;
+    }
+
+    &:active {
+        background-color: darken($theme, 20%); 
+    }
 }
 
 .btn-light {
@@ -11,4 +22,17 @@
     background-color: $cream;
     color: $theme;
     border: none;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background-color 0.1s ease;
+
+    &:hover {
+        background-color: darken($cream, 10%); 
+        text-decoration: none;
+    }
+
+
+    &:active {
+        background-color: darken($cream, 20%); 
+    }
 }

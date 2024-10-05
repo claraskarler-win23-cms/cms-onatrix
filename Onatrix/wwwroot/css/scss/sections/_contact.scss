@@ -1,0 +1,41 @@
+.contact-info {
+    .container {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+
+        .contact-image-area {
+            position: relative;
+            
+            img {
+                position: absolute;
+                bottom: 0px;
+                padding-top: 50px;
+                height: 100%;
+            }
+            .main-image {
+                z-index: 2;
+            }
+            .background {
+                z-index: 1;
+
+            }
+            .background-dots {
+                z-index: 0;
+                left: 320px;
+            }
+            }
+        .contact-text-area {
+            padding: 150px 0px;
+            color: $theme;
+            h2 {
+                font-weight: 700;
+                font-size: 2.2rem;
+            }
+            i {
+                color: $beige;
+            }
+        }
+    }
+
+}

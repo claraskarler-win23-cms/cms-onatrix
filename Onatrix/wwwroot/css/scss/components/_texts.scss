@@ -1,7 +1,8 @@
 .section-title {
     font-family: "Poppins", sans-serif;
 
-    p {
+    h5 {
+        font-size: 0.9rem;
         color: $beige;
         font-weight: 600;
     }
@@ -29,4 +30,9 @@ h2 {
 h3 {
     font-family: "Poppins", sans-serif;
     color: $theme;
+}
+
+.big-number {
+    font-size: 70px;
+    font-weight: 600;
 }

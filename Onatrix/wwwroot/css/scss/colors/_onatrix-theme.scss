@@ -8,6 +8,7 @@ $dark:      #0E0E0E;
 
 $gray-note: #9C9EA6;
 $gray-body-text: #535656;
+$gray-soft: #AAAAAA;
 
 @mixin shadow-s {
     box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
@@ -20,4 +21,8 @@ $gray-body-text: #535656;
 }
 @mixin theme-shadow {
     box-shadow: 0px 8px 18px -8px $theme;
+}
+
+@mixin shadow-dark {
+    box-shadow: 0px 2px 4px -1px rgba(19, 16, 34, 0.25), 0px 3px 8px -1px rgba(19, 16, 34, 0.35);
 }

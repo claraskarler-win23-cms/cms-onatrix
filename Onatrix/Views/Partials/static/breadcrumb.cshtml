@@ -1,0 +1,35 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Routing
+@using Umbraco.Extensions
+
+@inject IPublishedUrlProvider PublishedUrlProvider
+
+@{ 
+    var ancestors = Model.Ancestors().OrderBy(x => x.Level).ToList();
+}
+
+<section class="breadcrumb-section">
+    <div class="container">
+        <h1>@Model.Name</h1>
+
+        <ul class="breadcrumb">
+            <li>
+                <a href="/">Home </a>
+                >
+            </li>
+            @if (ancestors.Any())
+            {
+
+                foreach (var ancestor in ancestors)
+                {
+                    <li>
+                        <a href="@ancestor.Url(PublishedUrlProvider)">@ancestor.Name</a>
+                        >
+                    </li>
+                }
+            }
+
+            <li class="active">@Model.Name</li>
+        </ul>
+    </div>
+</section>

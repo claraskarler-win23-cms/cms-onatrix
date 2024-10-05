@@ -1,0 +1,41 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "mainLayout.cshtml";
+    ViewBag.Title = Model?.Name ?? null;
+}
+
+<section class="service-details">
+    <div class="container">
+        <div class="sidebar">
+            <div class="about-us">
+                <h4>About us</h4>
+                <img src="@Url.Content("~/media/r5fp1wgv/image-24-min-1.svg")">
+                <p>Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non </p>
+            </div>
+            <div class="email">
+                <h4>How can we help you?</h4>
+                <p>Online support 24/7, we are here to help you</p>
+                
+                <form method="post">
+                        <input type="email" class="form-control" placeholder="E-mail address" />
+                        <i class="fa-light fa-envelope"></i>
+                </form>
+            </div>
+        </div>
+        @Model.Value("serviceContent")
+    </div>
+</section>
+
+<section class="question-form">
+    <div class="container">
+        <form method="post">
+            <input class="form-control" placeholder="Name"/>
+            <input type="email" class="form-control" placeholder="Email" />
+            <textarea class="form-control" placeholder="Question"></textarea>
+        </form>
+        <button type="submit" class="btn-dark">Submit</button>
+    </div>
+</section>
+
+@await Html.PartialAsync("static/contact")

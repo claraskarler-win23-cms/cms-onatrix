@@ -4,13 +4,29 @@
 @{
     Layout = "mainLayout.cshtml";
     ViewBag.Title = @Model?.Value("pageTitle") ?? null;
+    
     var heroBackgroundImage = Model?.Value("heroImage") is IPublishedContent heroImage ? heroImage.Url() : "";
     var signatureImage = Model?.Value("aboutSignatureImage") is IPublishedContent signature ? signature.Url() : "";
+    var clientImage = Model?.Value("clientImage") is IPublishedContent client ? client.Url() : "";
+
+
+    var selectionServices = Umbraco.Content(Guid.Parse("fc30ec3e-6d53-42ba-bb92-d29754087714"))
+    .ChildrenOfType("serviceItemTemplate")
+    .Where(x => x.IsVisible());
+
+    var successStoryImage = Model?.Value("storiesImage") is IPublishedContent success ? success.Url() : "";
+
+    var freedombird = Model?.Value("brandsImage1") is IPublishedContent freedombirdLogo ? freedombirdLogo.Url() : "";
+    var identity = Model?.Value("brandsImage2") is IPublishedContent identityLogo ? identityLogo.Url() : "";
+    var natural = Model?.Value("brandsImage3") is IPublishedContent naturalLogo ? naturalLogo.Url() : "";
+    var simpleaf = Model?.Value("brandsImage4") is IPublishedContent simpleafLogo ? simpleafLogo.Url() : "";
+    var globe = Model?.Value("brandsImage5") is IPublishedContent globeLogo ? globeLogo.Url() : "";
+    var fossilgroup = Model?.Value("brandsImage6") is IPublishedContent fossilgroupLogo ? fossilgroupLogo.Url() : "";
     
 }
 
 <section id="hero" class="hero">
-    <img src="@heroBackgroundImage" alt="A smiling blonde-haired woman wearing glasses" />
+    <img class ="hero-image" src="@heroBackgroundImage" alt="A smiling blonde-haired woman wearing glasses" />
     <div class="container">
         <div class="showcase-text">
             <h1>@Model?.Value("heroHeadline")</h1>
@@ -28,7 +44,7 @@
                 <h2>@Model?.Value("aboutHeadline")</h2>
             </div>
             <div class="founder-text">
-                <div class="quote">“@Model?.Value("aboutQuotation")”</div>
+                <div class="quote">@Model?.Value("aboutQuotation")</div>
                 <p>@Model?.Value("aboutText")</p>
                 <div class="signature">
                     <img src="@signatureImage" alt="@Model?.Value("aboutSignatureText")" />
@@ -37,15 +53,112 @@
             </div>
         </div>
         <div class="call-back-box">
-            <h3>Request a call back</h3>
-            <p class="form-text">Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat</p>
-            <div class="form">
-                <p>Name</p>
-                <p>Email Address</p>
-                <p>Phone</p>
-                <p>Financial consulting</p>
-                <button class="btn-light">Submit</button>
-            </div>
+            <h3>Request a Call Back</h3>
+            <p class="form-text">
+                Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.
+            </p>
+            <form method="post">
+                <input type="text" name="name" class="form-control" placeholder="Name" required />
+                <input type="email" name="email" class="form-control" placeholder="Email address" required />
+                <input type="tel" name="phone" class="form-control" placeholder="Phone" required />
+                <select name="option" class="form-control" required>
+                    <option value="">Select an option</option>
+                    <option value="financial">Financial consulting</option>
+                    <option value="statistic">Statistic advisor</option>
+                    <option value="risk">Risk Management</option>
+                </select>
+                <button type="submit" class="btn-light">Submit</button>
+            </form>
         </div>
     </div>
 </section>
+
+<section class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h5>@Model.Value("servicesSectionTitle")</h5>
+                    <h2>@Model.Value("servicesHeadline")</h2>
+                </div>
+                <div class="service-grid">
+
+                        @foreach (var item in selectionServices)
+                        {
+                            var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+                            var synopsis = item?.Value<string>("synopsis") ?? "";
+
+                            <a class="service-box" href="@item.Url()">
+                                <h5>@item.Name()</h5>
+                                <img src="@image" alt ="@item.Name()">
+                                <p>@synopsis</p>
+
+                            </a>
+
+                        }
+
+                </div>
+            </div>
+        </section>
+
+<section class="client">
+            <div class="container">
+                <div class="client-text-area">
+                    <h2>@Model.Value("clientHeadline") <span>@Model.Value("clientHeadlineHighlight")</span></h2>
+                    <p>@Model.Value("clientText")</p>
+                    <button class="btn-dark">@Model.Value("clientButtonText")</button>
+                </div>
+                <img src="@clientImage" alt ="People in business attire smiling">
+            </div>
+        </section>
+
+<section class="stories">
+            <div class="container">
+                <div class="section-title">
+                    <h5>@Model.Value("storiesSectionTitle")</h5>
+                    <h2>@Model.Value("storiesSectionHeadline")</h2>
+                </div>
+                <div class="success-stats">
+                    <div class="number-stat">
+                        <div class="big-number">@Model.Value("storiesNumberStat1")</div>
+                        <p>@Model.Value("storiesTextStat1")</p>
+                    </div>
+                    <div class="number-stat">
+                        <div class="big-number">@Model.Value("storiesNumberStat2")</div>
+                        <p>@Model.Value("storiesTextStat2")</p>
+                    </div>
+                    <div class="number-stat">
+                        <div class="big-number">@Model.Value("storiesNumberStat3")</div>
+                        <p>@Model.Value("storiesTextStat3")</p>
+                    </div>
+                </div>
+                <img src="@successStoryImage">
+            </div>
+        </section>
+
+<section class="projects">
+            <div class="container">
+                <div class="section-title">
+                    <h5>OUR PROJECTS</h5>
+                    <h2>Recent projects</h2>
+                </div>
+                <div class="project-links">
+                    <div class="project-link">
+                        <img>
+                    <div class="project-link-info">
+                        <p class="project title"></p>
+                        <p class="project-category"></p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section class="brands">
+            <div class="container">
+                <img src="@freedombird" alt="Freedombird logo">
+                <img src="@identity" alt="Identity logo">
+                <img src="@natural" alt="Natural logo">
+                <img src="@simpleaf" alt="Simpleaf logo">
+                <img src="@globe" alt="Globe logo">
+                <img src="@fossilgroup" alt="FossilGroup logo">
+            </div>
+        </section>
