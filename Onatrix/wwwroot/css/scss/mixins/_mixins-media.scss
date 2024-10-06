@@ -26,8 +26,4 @@
     @include desktop() {
         max-width: 1320px;
     }
-
-    @include widescreen() {
-        max-width: 1920px;
-    }
 }

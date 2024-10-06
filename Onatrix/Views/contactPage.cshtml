@@ -3,6 +3,51 @@
 @{
 	Layout = "mainLayout.cshtml";
     ViewBag.Title = @Model?.Value("pageTitle") ?? null;
+
+    var locationImage = Model?.Value("callBackBackgroundImage") is IPublishedContent location ? location.Url() : "";
+
+    var freedombird = Model?.Value("contactBrandsImage1") is IPublishedContent freedombirdLogo ? freedombirdLogo.Url() : "";
+    var identity = Model?.Value("contactBrandsImage2") is IPublishedContent identityLogo ? identityLogo.Url() : "";
+    var natural = Model?.Value("contactBrandsImage3") is IPublishedContent naturalLogo ? naturalLogo.Url() : "";
+    var simpleaf = Model?.Value("contactBrandsImage4") is IPublishedContent simpleafLogo ? simpleafLogo.Url() : "";
+    var globe = Model?.Value("contactBrandsImage5") is IPublishedContent globeLogo ? globeLogo.Url() : "";
+    var fossilgroup = Model?.Value("contactBrandsImage6") is IPublishedContent fossilgroupLogo ? fossilgroupLogo.Url() : "";
 }
 
-@await Html.PartialAsync("static/contact")
+<div class="contact-page">
+    @await Html.PartialAsync("static/contact")
+</div>
+
+<section class="contact-call-back">
+    <img src="@locationImage" alt="map of office location">
+    <div class="container">
+        <div class="section-title">
+        <h5>@Model.Value("callBackSectionTitle")</h5>
+        <h2>@Model.Value("callBackHeadline")</h2>
+        </div>
+        <p>@Model.Value("callBackText")</p>
+        <form method="post">
+            <input type="text" name="name" class="form-control" placeholder="Name" required />
+            <input type="email" name="email" class="form-control" placeholder="Email address" required />
+            <input type="tel" name="phone" class="form-control" placeholder="Phone" required />
+            <select name="option" class="form-control" required>
+                <option value="">Select an option</option>
+                <option value="financial">Financial consulting</option>
+                <option value="statistic">Statistic advisor</option>
+                <option value="risk">Risk Management</option>
+            </select>
+        </form>
+        <button type="submit" class="btn-dark">@Model.Value("callBackButtonText")</button>
+    </div>
+</section>
+
+<section class="brands">
+            <div class="container">
+                <img src="@freedombird" alt="Freedombird logo">
+                <img src="@identity" alt="Identity logo">
+                <img src="@natural" alt="Natural logo">
+                <img src="@simpleaf" alt="Simpleaf logo">
+                <img src="@globe" alt="Globe logo">
+                <img src="@fossilgroup" alt="FossilGroup logo">
+            </div>
+        </section>

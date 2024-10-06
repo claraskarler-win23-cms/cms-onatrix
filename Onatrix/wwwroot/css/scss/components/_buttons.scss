@@ -9,11 +9,13 @@
     transition: background-color 0.1s ease;
     &:hover {
         background-color: darken($theme, 10%); 
+        color: $cream;
         text-decoration: none;
     }
 
     &:active {
         background-color: darken($theme, 20%); 
+        color: $cream;
     }
 }
 
@@ -34,5 +36,94 @@
 
     &:active {
         background-color: darken($cream, 20%); 
+    }
+}
+
+.tag {
+    background-color: $white;
+    color: $theme;
+    border: 1px solid darken($off-white, 10%);
+    border-radius: 25px;
+    padding: 7px 10px;
+    margin: 5px 5px;
+
+    
+
+    &:hover {
+        background-color: darken($off-white, 1%); 
+        text-decoration: none;
+    }
+
+
+    &:active {
+        background-color: darken($off-white, 5%); 
+    }
+
+}
+
+.tag.beige {
+    background-color: $cream;
+    border: none;
+
+    &:hover {
+        background-color: darken($cream, 5%); 
+    }
+
+
+    &:active {
+        background-color: darken($cream, 10%); 
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+
+    button {
+        background-color: transparent;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 10px;
+        margin: 0 10px;
+    }
+
+    .page-numbers {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        .page-number {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin: 0 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &.active {
+                border: 1px solid darken($off-white, 10%);
+            }
+
+            &:hover {
+                background-color: darken($off-white, 10%);
+            }
+        }
+    }
+
+    .prev, .next {
+        color: $theme;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 10px;
+        transition: background-color 0.3s ease;
     }
 }

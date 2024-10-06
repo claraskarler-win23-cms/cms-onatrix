@@ -22,6 +22,33 @@ a {
     gap: 20px; 
 
     .service-box {
-        border: 1px solid $off-white;
+        border: 2.5px solid $off-white;                                 
+        width: 100%;
+        transition: all 0.2s ease;
+
+        &:hover {
+            border-color: darken($off-white, 15%);  
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        }
+
+        &:active {
+            border-color: darken($off-white, 25%);  
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+        }
+
+        img {                     
+            width: 100%;                        
+            height: auto;                       
+        }
+
+        h5 {
+            padding: 20px 20px;
+
+        }
+
+        p {
+            font-size: 0.9rem;
+            padding: 10px 10px;
+        }
     }
 }

@@ -3,4 +3,75 @@
 @{
 	Layout = "mainLayout.cshtml";
     ViewBag.Title = @Model?.Value("pageTitle") ?? null;
+    var founderImage = Model?.Value("founderImage") is IPublishedContent founder ? founder.Url() : "";
+    var reviewsImage = Model?.Value("reviewsImage") is IPublishedContent reviews ? reviews.Url() : "";
 }
+
+<section class="founder">
+    <div class="container">
+        <div class="founder-image">
+            <img src="@founderImage"/>
+            <p>@Model.Value("founderImageText")</p>
+        </div>
+        <div class="founder-letter">
+            <p class="quote">@Model.Value("founderQuotation")</p>
+            <div class="founder-text">
+                @Model.Value("founderText")
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h5>@Model.Value("reviewsSectionTitle")</h5>
+                <h2>@Model.Value("reviewsHeadline")</h2>
+            </div>
+            <p class="review-text">@Model.Value("reviewsText")</p>
+            <div class="rating">
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+            </div>
+    
+            <div class="reviewer">
+                <p class="reviewer-name">@Model.Value("reviewsName")</p>
+                <p class="reviewer-company">@Model.Value("reviewsCompany")</p>
+            </div>
+        </div>
+        <img src="@reviewsImage"/>
+</section>
+
+<section class="about-expert">
+    <div class="container">
+        <div class="section-title">
+            <h5>@Model.Value("expertSectionTitle")</h5>
+            <h2>@Model.Value("expertHeadline")</h2>
+        </div>
+
+        @{
+            var selection = Umbraco.Content(Guid.Parse("2683836c-c529-47f7-8834-f31ac85937a3"))
+            .ChildrenOfType("expertItemTemplate")
+            .Where(x => x.IsVisible());
+        }
+        <div class="expert-boxes">
+            @foreach (var item in selection)
+            {
+                var image = item?.Value<IPublishedContent>("expertImage")?.Url() ?? "";
+                var position = item?.Value<string>("expertPosition") ?? "";
+
+                <div class="expert-box">
+                    <img src="@image" alt="@item.Name">
+                    <h5>@item.Name</h5>
+                    <p>@position</p>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
+
+@await Html.PartialAsync("static/contact")

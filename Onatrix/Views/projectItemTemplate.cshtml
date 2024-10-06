@@ -7,7 +7,50 @@
 
 <section class="project-details">
     <div class="container">
-        @Model.Value("projectContent")
-    </div>
+        <div class="project-content">
+            @Model.Value("projectContent")
+            <div class="project-tags">
+                <h6>Tags:</h6>
+                @if(Model.HasValue("projectTags"))
+                        {
+                        var tags = Model.Value<IEnumerable<string>>("projectTags");
+                                @foreach(var tag in tags)
+                                {
+                                    <button class="tag beige">@tag</button>
+                                }
+                        }
 
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="tags">
+                <h4>@Model.Parent.Value("sidebarTagText")</h4>
+                <div class="tags-container">
+                    @if(Model.Parent.HasValue("sidebarTags"))
+                        {
+                        var tags = Model.Parent.Value<IEnumerable<string>>("sidebarTags");
+                                @foreach(var tag in tags)
+                                {
+                                    <button class="tag">@tag</button>
+                                }
+                        }
+                </div>
+            </div>
+
+            <div class="form-email">
+                <h4>How can we help you?</h4>
+                <p>Online support 24/7, we are here to help you</p>
+                
+                <form method="post">
+                    <div class="input-wrapper">
+                        <input type="email" class="form-control" placeholder="E-mail address" required />
+                        <i class="fa-light fa-envelope"></i>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </section>
+
+@await Html.PartialAsync("static/contact")

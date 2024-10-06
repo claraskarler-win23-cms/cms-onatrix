@@ -14,6 +14,12 @@
     .ChildrenOfType("serviceItemTemplate")
     .Where(x => x.IsVisible());
 
+    
+	var selection = Umbraco.Content(Guid.Parse("ef95bffe-936f-45f1-a94e-ad242cd4ebb0"))
+    .ChildrenOfType("projectItemTemplate")
+    .Where(x => x.IsVisible());
+
+
     var successStoryImage = Model?.Value("storiesImage") is IPublishedContent success ? success.Url() : "";
 
     var freedombird = Model?.Value("brandsImage1") is IPublishedContent freedombirdLogo ? freedombirdLogo.Url() : "";
@@ -104,7 +110,7 @@
                 <div class="client-text-area">
                     <h2>@Model.Value("clientHeadline") <span>@Model.Value("clientHeadlineHighlight")</span></h2>
                     <p>@Model.Value("clientText")</p>
-                    <button class="btn-dark">@Model.Value("clientButtonText")</button>
+                    <a href="/about" class="btn-dark">@Model.Value("clientButtonText")</a>
                 </div>
                 <img src="@clientImage" alt ="People in business attire smiling">
             </div>
@@ -137,19 +143,25 @@
 <section class="projects">
             <div class="container">
                 <div class="section-title">
-                    <h5>OUR PROJECTS</h5>
-                    <h2>Recent projects</h2>
-                </div>
-                <div class="project-links">
-                    <div class="project-link">
-                        <img>
-                    <div class="project-link-info">
-                        <p class="project title"></p>
-                        <p class="project-category"></p>
-                    </div>
-                    </div>
+                    <h5>@Model.Value("projectsSectionTitle")</h5>
+                    <h2>@Model.Value("projectsSectionHeadline")</h2>
                 </div>
             </div>
+            <div class="project-links">
+                    @foreach (var item in selection)
+                    {
+                        var projectImage = item?.Value<IPublishedContent>("projectThumbnail")?.Url() ?? "";
+                        var category = item?.Value<string>("projectCategory") ?? "";
+
+                        <a href="@item.Url()" class="project-link">
+                            <img src="@projectImage">
+                            <div class="project-link-info">
+                                <h5 class="project title">@item.Name</h5>
+                                <p class="project-category">@category</p>
+                            </div>
+                        </a>
+                    }
+                </div>
         </section>
 
 <section class="brands">

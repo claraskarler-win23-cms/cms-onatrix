@@ -1,5 +1,7 @@
 .section-title {
     font-family: "Poppins", sans-serif;
+    padding-top: 70px;
+    padding-bottom: 30px;
 
     h5 {
         font-size: 0.9rem;
@@ -25,6 +27,7 @@ h1 {
 h2 {
     font-family: "Poppins", sans-serif;
     color: $theme;
+    font-weight: 600;
 }
 
 h3 {
@@ -32,7 +35,29 @@ h3 {
     color: $theme;
 }
 
+h4 {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+}
+
+h5 {
+    font-family: "Poppins", sans-serif;
+    color: $theme;
+    font-weight: 600;
+}
+
+h6 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
 .big-number {
     font-size: 70px;
     font-weight: 600;
+}
+
+.quote {
+    font-style: italic;
+    font-size: 1.2rem;
+    font-weight: 300;
+    padding-bottom: 10px;
 }
